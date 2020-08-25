@@ -7,11 +7,37 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "cz-lean-changelog": "0.0.2"
+    "cz-lean-changelog": "0.0.2",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.1.0",
+    "nodemon": "^2.0.4"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-lean-changelog"
     }
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "node-telegram-bot-api": "^0.50.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix .",
+      "prettier --write"
+    ]
+  },
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
   }
 }
